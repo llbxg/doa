@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+{% from "parts/head.html"     import generate_head %}
+{% from "parts/header.html"   import generate_header %}
+{% from "parts/footer.html"   import generate_footer %}
+
+{{ generate_head() }}
+
+<body>
+
+<div class="contents">
+{% if tp == 'main' %}
+{{ generate_header() }}
+{% include "pages/main.html" %}
+
+{% elif name == 'fish' %}
+{{ generate_header(tp=tp, name=name) }}
+{% include "pages/appforpc/fish.html" %}
+
+{% elif name == 'iro' %}
+{{ generate_header(tp=tp, name=name) }}
+{% include "pages/appforpc/iro.html" %}
+
+{% elif tp == 'appforpc' %}
+{{ generate_header(tp=tp) }}
+{% include "pages/appforpc.html" %}
+
+
+{% elif name == 'cript' %}
+{{ generate_header(tp=tp, name=name3) }}
+{% include "pages/webpages/cript.html" %}
+
+
+{% elif tp == 'webpages' %}
+{{ generate_header(tp=tp) }}
+{% include "pages/webpages.html" %}
+
+{% elif tp == 'about' %}
+{{ generate_header(tp=tp) }}
+{% include "pages/about.html" %}
+
+{% endif %}
+{{generate_footer()}}
+</div>
+
+</body>
+
+</html>

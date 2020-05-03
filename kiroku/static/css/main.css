@@ -1,0 +1,160 @@
+:root{
+    --font-size: 11px;
+    --main :#F8F8FA;
+    --sub  :#08AC70;
+    --pop  :#FA3743;
+    --text :#003068;
+}
+
+html, body{
+    font-family: SFMono, HackGen, monospace;
+    font-size: var(--font-size);
+
+    width:100%;
+    height:100%;
+
+    margin: 0;
+    padding: 0;
+    
+    background-color: var(--main);
+    color: var(--text);
+}
+
+body{
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display:none;
+}
+
+/* de-------------------------------------- */
+
+a{
+    padding: .3em;
+    color: var(--text);
+    text-decoration: none;
+}
+
+a:hover{
+    background-color: var(--text);
+    color:var(--main);
+}
+
+.mark{
+    font-size: 1.5em;
+}
+
+code{
+    font-family: SFMono, HackGen, monospace; 
+    
+    border: solid 1px var(--text);
+}
+
+pre{
+    font-family: SFMono, HackGen, monospace;
+
+    width: 50%;
+
+    padding: .3em .3em .3em 1em;
+
+    border: solid 1px var(--text);
+}
+
+/* header-------------------------------------- */
+header{
+    width: 100%;
+    height: 3em; 
+    
+    position: fixed; 
+    top: 0px;
+    left: 0px;
+
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-direction: row;
+    flex-direction: rowe;    
+}
+
+.header{
+    margin: 0;
+    margin-left: 5% ;
+    padding: 0;
+}
+
+.header p{
+    margin-top: 2em;
+}
+
+
+/* contents-------------------------------------- */
+.contents{
+    max-width: 650px;
+
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 5em;
+    padding-bottom: 5em;
+
+    display: block;
+}
+
+ul {
+    padding: 0.5em 1em 0.5em 1.5em;
+    border-top: solid var(--text) 1px;
+    border-bottom: solid var(--text) 1px;
+    
+    position: relative;
+}
+
+ul li {
+    line-height: 1.5;
+    list-style-type: none!important;
+}
+
+ul li:before {
+    content: "-";
+    position: absolute;
+    left : .1em;
+}
+
+.sen{
+    border-bottom: 1px solid var(--text);
+
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.line{
+    border-bottom: 1px solid var(--text);
+
+    margin-top: .5em;
+    margin-bottom: 1em;
+}
+
+.pic{
+    width: 100%;
+}
+
+.shashin{
+    width: 80%;
+}
+
+.chu{
+    margin-top: 0;
+}
+
+.sukoshi{
+    margin-top: 1.5em;
+}
+
+.totemo{
+    margin-top: 4em;
+}
+
+.bold{
+    font-weight: bold;
+}
