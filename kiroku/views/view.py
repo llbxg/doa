@@ -39,3 +39,9 @@ def cript():
 def about():
     temp = render_template('template.html', tp='about')
     return prepare_response(temp)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    temp = render_template('template.html', tp='main')
+    return prepare_response(temp)
+app.register_error_handler(404, page_not_found)
