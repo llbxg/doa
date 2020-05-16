@@ -1,0 +1,15 @@
+<header>
+<div class="header">
+<p>
+<a class="logo" href="/">kosh.dev</a>
+
+{% if tp != '' and tp != 'main' %}
+<span>/ </span><a href="/{{tp}}">{{tp}}</a>
+{% endif %}
+
+{% if name != '' %}
+<span>/ </span><a href="/{{name}}">{{name}}</a>
+{% endif %}
+</p>
+</div> 
+</header>

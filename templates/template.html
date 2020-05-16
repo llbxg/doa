@@ -1,0 +1,36 @@
+<html>
+{% include "/parts/head.html" %}
+<body>
+<div class="contents">
+{% include "/parts/header.html" %}
+
+{% if tp == 'main' %}
+{% include "/pages/main.html" %}
+
+{% elif name == 'fish' %}
+{% include "/pages/appforpc/fish.html" %}
+
+{% elif tp == 'appforpc' %}
+{% include "/pages/appforpc.html" %}
+
+{% elif name == 'cript' %}
+{% include "/pages/webpages/cript.html" %}
+
+{% elif tp == 'webpages' %}
+{% include "/pages/webpages.html" %}
+
+{% elif name == 'test-tube' %}
+{% include "/pages/code/testtube.html" %}
+
+{% elif tp == 'code' %}
+{% include "/pages/code.html" %}
+
+{% elif tp == 'about' %}
+{% include "/pages/about.html" %}
+
+{% endif %}
+
+{% include "/parts/footer.html" %}
+</div>
+</body>
+</html>
