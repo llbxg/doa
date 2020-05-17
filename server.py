@@ -35,10 +35,15 @@ def code(env):
     return open_template('template.html', {'tp':'code', 'name':''})
 app.registration('code', 'GET', code)
 
-#3 test-tube
+#3.1 test-tube
 def testtube(env):
     return open_template('template.html', {'tp':'code', 'name':'test-tube'})
 app.registration('testtube', 'GET', testtube)
+
+#3.2 test-tube
+def fukami(env):
+    return open_template('template.html', {'tp':'code', 'name':'fukami'})
+app.registration('fukami', 'GET', fukami)
 
 #X about
 def about(env):
