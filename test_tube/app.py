@@ -1,9 +1,10 @@
 import re
 
 from test_tube.route import Route, Static
+from test_tube.file  import open_template
 
 def e404(env):
-    return [b'404 Not Found']
+    return open_template('template.html', {'tp':'notfound', 'name':''})
 
 class App():
     def __init__(self):

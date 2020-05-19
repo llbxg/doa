@@ -45,6 +45,16 @@ def fukami(env):
     return open_template('template.html', {'tp':'code', 'name':'fukami'})
 app.registration('fukami', 'GET', fukami)
 
+#4 font
+def font(env):
+    return open_template('template.html', {'tp':'font', 'name':''})
+app.registration('font', 'GET', font)
+
+#4.1 tse
+def tse(env):
+    return open_template('template.html', {'tp':'font', 'name':'tse'})
+app.registration('tse', 'GET', tse)
+
 #X about
 def about(env):
     return open_template('template.html', {'tp':'about', 'name':''})

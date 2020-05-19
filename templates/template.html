@@ -28,8 +28,17 @@
 {% elif tp == 'code' %}
 {% include "/pages/code.html" %}
 
+{% elif name == 'tse' %}
+{% include "/pages/font/tse.html" %}
+
+{% elif tp == 'font' %}
+{% include "/pages/font.html" %}
+
 {% elif tp == 'about' %}
 {% include "/pages/about.html" %}
+
+{% elif tp == 'notfound' %}
+{% include "/pages/notfound.html" %}
 
 {% endif %}
 
