@@ -9,7 +9,7 @@
 
 {% if name != '' and name != 'test-tube' %}
 <span>/ </span><a href="/{{name}}">{{name}}</a>
-{% elif name != 'testtube' %}
+{% elif name == 'test-tube' %}
 <span>/ </span><a href="/testtube">{{name}}</a>
 
 {% endif %}
