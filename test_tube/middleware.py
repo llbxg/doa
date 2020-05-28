@@ -31,7 +31,7 @@ class MyMiddleware(object):
 
                     except FileNotFoundError:
                         print('No such file or directory')
-                
+
                 elif file_extention == '.css':
                     try:
                         static = Static(200, 'text/css; charset=UTF-8')

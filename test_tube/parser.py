@@ -53,7 +53,7 @@ class MyHTMLParser(HTMLParser):
         return ''.join(self.__html)
 
 def chek_url(url):
-    ok_url = ['github.com', 'kosh.dev', 'www.cript.me', 'twitter.com']
+    ok_url = ['github.com', 'kosh.dev', 'www.cript.me', 'twitter.com', 'webring.xxiivv.com']
 
     if re.match('^\/', url) is not None:
         return True
