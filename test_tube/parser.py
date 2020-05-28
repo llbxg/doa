@@ -57,6 +57,9 @@ def chek_url(url):
 
     if re.match('^\/', url) is not None:
         return True
+    
+    elif re.match('mailto:hello@kosh.dev', url) is not None:
+        return True
 
     elif re.match('^https?://', url) is not None:
         for site_name in ok_url:

@@ -1,48 +1,40 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" >
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="/static/main.css/" >
 
-<link rel="icon" href="/static/settingXkoshXtomeiicon.png/" /> 
-<link rel="apple-touch-icon-precomposed" href="https://www.kosh.dev/static/settingXkoshXicon.png/" >
+<link rel="icon" href="/static/settingXkosh.png/" /> 
+<link rel="apple-touch-icon-precomposed" href="https://www.kosh.dev/static/settingXkoshdevapp.png/" >
 
-<meta name="msapplication-TileImage" content="/static/settingXkoshXtitleimg.png/" />
+<meta name="msapplication-TileImage" content="/static/settingXkoshdev.png/" />
 <meta name="msapplication-TileColor" content="#F8F8FA" />
 
 <meta name='apple-mobile-web-app-capable' content='yes' />
 
 {% if tp == 'main' %}
 <meta property="og:type" content="website" />
-
 {% elif tp == 'about' %}
 <meta property="og:type" content="profile" />
-
 {% else %}
 <meta property="og:type" content="article" />
-
 {% endif %}
 
-{% if name == 'fish' %}
-<title>kosh.dev:fish-in-txt</title>
-<meta property="og:title" content="fish-in-txt" />
-
-{% elif name == 'cript' %}
-<title>kosh.dev:cript.me</title>
-<meta property="og:title" content="critp.me" />
-
-{% else %}
-<title>kosh.dev</title>
+{% if tp == 'main' %}
+<title>kosh.dev | {{ tp }}</title>
 <meta property="og:title" content="xxxx" />
-
+<meta property="og:url" content="https://www.kosh.dev/" />
+{% elif name == '' %}
+<title>kosh.dev | {{ tp }}</title>
+<meta property="og:title" content="{{ tp }}" />
+<meta property="og:url" content="https://www.kosh.dev/{{ tp }}" />
+{% else %}
+<title>kosh.dev | {{ name }}</title>
+<meta property="og:title" content="{{name}}" />
+<meta property="og:url" content="https://www.kosh.dev/{{ name }}" />
 {% endif %}
 
-<meta property="og:description" content=":-) { konnichiha / ksoh.dev" />
-<meta property="og:url" content="https://www.kosh.dev/" />
-<meta property="og:image" content="https://www.kosh.dev/static/settingXkoshXheader.png/" />
-
+<meta property="og:description" content="xxxx" />
+<meta property="og:image" content="https://www.kosh.dev/static/settingXkoshheader.png/" />
 <meta property="og:site_name" content="kosh.dev" />
 
 <meta property="fb:app_id" content="949385185512722" />

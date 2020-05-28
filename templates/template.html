@@ -1,47 +1,20 @@
 <html>
 {% include "/parts/head.html" %}
 <body>
-<div class="contents">
 {% include "/parts/header.html" %}
-
+<div class="contents">
 {% if tp == 'main' %}
-{% include "/pages/main.html" %}
-
-{% elif name == 'fish' %}
-{% include "/pages/appforpc/fish.html" %}
-
-{% elif tp == 'appforpc' %}
-{% include "/pages/appforpc.html" %}
-
-{% elif name == 'cript' %}
-{% include "/pages/webpages/cript.html" %}
-
-{% elif tp == 'webpages' %}
-{% include "/pages/webpages.html" %}
-
-{% elif name == 'test-tube' %}
-{% include "/pages/code/testtube.html" %}
-
-{% elif name == 'fukami' %}
-{% include "/pages/code/fukami.html" %}
-
-{% elif tp == 'code' %}
-{% include "/pages/code.html" %}
-
-{% elif name == 'tse' %}
-{% include "/pages/font/tse.html" %}
-
-{% elif tp == 'font' %}
-{% include "/pages/font.html" %}
-
+{% include '/parts/main.html' %}
 {% elif tp == 'about' %}
-{% include "/pages/about.html" %}
+{% include '/parts/about.html' %}
+<!-- auto writing -->
+{% elif name == 'test-tube' %}
+{% include '/pages/test-tube.html' %}
 
-{% elif tp == 'notfound' %}
-{% include "/pages/notfound.html" %}
-
+<!-- auto writing -->
+{% elif tp == 'code' %}
+{% include '/parts/code.html' %}
 {% endif %}
-
 {% include "/parts/footer.html" %}
 </div>
 </body>

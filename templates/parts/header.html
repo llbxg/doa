@@ -2,17 +2,12 @@
 <div class="header">
 <p>
 <a class="logo" href="/">kosh.dev</a>
-
-{% if tp != '' and tp != 'main' %}
-<span>/ </span><a href="/{{tp}}">{{tp}}</a>
+{% if tp != 'main' %}
+<span> / </span><a href="/{{tp}}">{{tp}}</a>
 {% endif %}
-
-{% if name != '' and name != 'test-tube' %}
-<span>/ </span><a href="/{{name}}">{{name}}</a>
-{% elif name == 'test-tube' %}
-<span>/ </span><a href="/testtube">{{name}}</a>
-
+{% if name != '' %}
+<span> / </span><a href="/{{name}}">{{name}}</a>
 {% endif %}
 </p>
-</div> 
+</div>
 </header>
