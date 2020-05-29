@@ -125,6 +125,10 @@ header{
     padding-left: 3px;
 }
 
+.iconcol{
+    flex-direction: column;
+}
+
 .icons a:hover{
     color:var(--text);
     background-color: var(--main);
@@ -161,6 +165,11 @@ header{
 
     border: .5px solid var(--main);
     padding-right: .1em;
+    width: 200px;
+}
+
+.fn{
+    margin-right: auto;
 }
 
 .info img{
