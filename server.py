@@ -1,4 +1,4 @@
-from test_tube import App, MyMiddleware, open_template, hello_grass
+from test_tube import App, MyMiddleware, open_template, hello_grass, gitlog
 from wsgiref.simple_server import make_server
 app = App()
 #0 main
@@ -25,6 +25,10 @@ app.registration('fonts', 'GET', fonts)
 def gallery(env):
     return open_template('template.html', {'tp':'gallery', 'name':'', 'va':''})
 app.registration('gallery', 'GET', gallery)
+#6 log
+def logs(env):
+    return open_template('template.html', {'tp':'log', 'name':'', 'va':gitlog()})
+app.registration('log', 'GET', logs)
 #auto writing
 #code-test-tube
 def testtube(env):
