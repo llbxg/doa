@@ -11,9 +11,20 @@
 {% elif name == 'test-tube' %}
 {% include '/pages/test-tube.html' %}
 
+{% elif name == 'fish' %}
+{% include '/pages/fish.html' %}
+
 <!-- auto writing -->
 {% elif tp == 'code' %}
 {% include '/parts/code.html' %}
+{% elif tp == 'appforpc' %}
+{% include '/parts/appforpc.html' %}
+{% elif tp == 'fonts' %}
+{% include '/parts/fonts.html' %}
+{% elif tp == 'gallery' %}
+{% include '/parts/gallery.html' %}
+{% elif tp == 'notfound' %}
+{% include '/parts/notfound.html' %}
 {% endif %}
 {% include "/parts/footer.html" %}
 </div>
