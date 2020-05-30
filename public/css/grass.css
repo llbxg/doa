@@ -1,0 +1,32 @@
+.day{
+    width:18px;
+    height: 12px;
+    margin-top: 2px;
+}
+
+._0{ width: 0;height: 0;border-style: solid;border-width: 0 9px 12px 9px;border-color: transparent transparent #ebedf0 transparent;position: relative;}
+._0::before{content: "";width: 0;height: 0;border-style: solid;border-width: 12px 0 0 12px;border-color: transparent transparent transparent #ebedf0;left: -9px;position: absolute;}
+._0::after{content: "";width: 0;height: 0;border-style: solid;border-width: 0 0 12px 12px;border-color: transparent transparent #ebedf0 transparent;left: -3px;position: absolute;}
+
+._1{ width: 0;height: 0;border-style: solid;border-width: 0 9px 12px 9px;border-color: transparent transparent #c6e48b transparent;position: relative;}
+._1::before{content: "";width: 0;height: 0;border-style: solid;border-width: 12px 0 0 12px;border-color: transparent transparent transparent #c6e48b;left: -9px;position: absolute;}
+._1::after{content: "";width: 0;height: 0;border-style: solid;border-width: 0 0 12px 12px;border-color: transparent transparent #c6e48b transparent;left: -3px;position: absolute;}
+
+._2{ width: 0;height: 0;border-style: solid;border-width: 0 9px 12px 9px;border-color: transparent transparent #239a3b transparent;position: relative;}
+._2::before{content: "";width: 0;height: 0;border-style: solid;border-width: 12px 0 0 12px;border-color: transparent transparent transparent #239a3b;left: -9px;position: absolute;}
+._2::after{content: "";width: 0;height: 0;border-style: solid;border-width: 0 0 12px 12px;border-color: transparent transparent #239a3b transparent;left: -3px;position: absolute;}
+
+._3{ width: 0;height: 0;border-style: solid;border-width: 0 9px 12px 9px;border-color: transparent transparent #196127 transparent;position: relative;}
+._3::before{content: "";width: 0;height: 0;border-style: solid;border-width: 12px 0 0 12px;border-color: transparent transparent transparent #196127;left: -9px;position: absolute;}
+._3::after{content: "";width: 0;height: 0;border-style: solid;border-width: 0 0 12px 12px;border-color: transparent transparent #196127 transparent;left: -3px;position: absolute;}
+
+.week{
+    display: flex;
+    flex-direction: row;
+}
+
+.month{
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+}

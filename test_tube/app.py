@@ -4,7 +4,7 @@ from test_tube.route import Route, Static
 from test_tube.file  import open_template
 
 def e404(env):
-    return open_template('template.html', {'tp':'notfound', 'name':''})
+    return open_template('template.html', {'tp':'notfound', 'name':'', 'va':''})
 
 class App():
     def __init__(self):
