@@ -45,5 +45,10 @@ def tse(env):
     return open_template('template.html', {'tp':'fonts', 'name':'tse', 'va':''})
 app.registration('tse', 'GET', tse)
 
+#gallery-bird
+def bird(env):
+    return open_template('template.html', {'tp':'gallery', 'name':'bird', 'va':''})
+app.registration('bird', 'GET', bird)
+
 #auto writing
 app = MyMiddleware(app)
