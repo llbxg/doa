@@ -40,5 +40,10 @@ def fish(env):
     return open_template('template.html', {'tp':'appforpc', 'name':'fish', 'va':''})
 app.registration('fish', 'GET', fish)
 
+#fonts-tse
+def tse(env):
+    return open_template('template.html', {'tp':'fonts', 'name':'tse', 'va':''})
+app.registration('tse', 'GET', tse)
+
 #auto writing
 app = MyMiddleware(app)
