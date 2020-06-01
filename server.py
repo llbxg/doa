@@ -50,5 +50,10 @@ def bird(env):
     return open_template('template.html', {'tp':'gallery', 'name':'bird', 'va':''})
 app.registration('bird', 'GET', bird)
 
+#code-fukami
+def fukami(env):
+    return open_template('template.html', {'tp':'code', 'name':'fukami', 'va':''})
+app.registration('fukami', 'GET', fukami)
+
 #auto writing
 app = MyMiddleware(app)
