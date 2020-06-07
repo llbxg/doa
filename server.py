@@ -55,5 +55,10 @@ def fukami(env):
     return open_template('template.html', {'tp':'code', 'name':'fukami', 'va':''})
 app.registration('fukami', 'GET', fukami)
 
+#gallery-keyboard
+def keyboard(env):
+    return open_template('template.html', {'tp':'gallery', 'name':'keyboard', 'va':''})
+app.registration('keyboard', 'GET', keyboard)
+
 #auto writing
 app = MyMiddleware(app)
