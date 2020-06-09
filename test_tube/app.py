@@ -1,19 +1,20 @@
 import re
+from functools import partial
 
 from test_tube.route import Route, Static
 from test_tube.file  import open_template
 
-def e404(env):
-    return open_template('template.html', {'tp':'error', 'name':'404', 'va':''})
+def error_(code, env):
+    if type(code)!=str:
+        code = str(code)
+    return open_template('template.html', {'tp':'error', 'name':code, 'va':''})
 
-def e405(env):
-    return open_template('template.html', {'tp':'error', 'name':'405', 'va':''})
 
 class App():
     def __init__(self):
         self.routes = []
-        self.__e404 =Route(None, None, e404, status=404)
-        self.__e405 =Route(None, None, e405, status=404)
+        self.__e404 =Route(None, None, partial(error_, 404), status=404)
+        self.__e405 =Route(None, None, partial(error_, 405), status=404)
 
     def registration(self, path, method, callback):
         new_path = '^/' + path + '$'
