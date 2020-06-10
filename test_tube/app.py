@@ -14,7 +14,7 @@ class App():
     def __init__(self):
         self.routes = []
         self.__e404 =Route(None, None, partial(error_, 404), status=404)
-        self.__e405 =Route(None, None, partial(error_, 405), status=404)
+        self.__e405 =Route(None, None, partial(error_, 405), status=405)
 
     def registration(self, path, method, callback):
         new_path = '^/' + path + '$'
