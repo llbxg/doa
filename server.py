@@ -1,4 +1,5 @@
-from test_tube import App, MyMiddleware, open_template, hello_grass, gitlog
+from test_tube import App, MyMiddleware, open_template
+from benri import hello_grass, gitlog
 from wsgiref.simple_server import make_server
 app = App()
 #0 main
