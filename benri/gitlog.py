@@ -32,3 +32,6 @@ def gitlog():
     except urllib.error.URLError as err:
         print(err.reason)
         return log
+
+    except IndexError:
+        return log
