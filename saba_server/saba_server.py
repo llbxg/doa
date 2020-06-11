@@ -64,6 +64,10 @@ class Saba():
 
         if '?' in self.path:
             self.path, self.query = self.path.split('?', 1)
+            self.path = self.path+'/'
+            if self.query[-1] == '/':
+                self.query = self.query[:-1]
+
         else:
             self.query=""
 
