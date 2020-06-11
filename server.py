@@ -61,5 +61,10 @@ def keyboard(env):
     return open_template('template.html', {'tp':'gallery', 'name':'keyboard', 'va':''})
 app.registration('keyboard', 'GET', keyboard)
 
+#code-saba
+def saba(env):
+    return open_template('template.html', {'tp':'code', 'name':'saba', 'va':''})
+app.registration('saba', 'GET', saba)
+
 #auto writing
 app = MyMiddleware(app)
