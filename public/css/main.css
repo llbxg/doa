@@ -205,3 +205,8 @@ header{
     border-radius: 50%;
     background-color: black;
 }
+
+.comment{
+    font-size: 9px;
+    color: gray;
+}
