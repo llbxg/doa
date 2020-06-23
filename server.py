@@ -26,6 +26,10 @@ app.registration('fonts', 'GET', fonts)
 def gallery(env):
     return open_template('template.html', {'tp':'gallery', 'name':'', 'va':''})
 app.registration('gallery', 'GET', gallery)
+#6 blog
+def blog(env):
+    return open_template('template.html', {'tp':'blog', 'name':'', 'va':''})
+app.registration('blog', 'GET', blog)
 #6 log
 def logs(env):
     return open_template('template.html', {'tp':'log', 'name':'', 'va':gitlog()})
