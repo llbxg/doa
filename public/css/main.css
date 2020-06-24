@@ -210,3 +210,21 @@ header{
     font-size: 9px;
     color: gray;
 }
+
+.blogs{
+    display: flex;
+    flex-direction: column;
+}
+
+.blogs .blog{
+    margin-top: 15px;
+    width: 100%;
+
+}
+
+.blogs .blogdate{
+    text-align: right;
+    margin-right: 1em;
+    font-size: calc(1em * 0.8);
+    color: gray;
+}

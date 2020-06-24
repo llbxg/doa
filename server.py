@@ -1,5 +1,5 @@
 from test_tube import App, MyMiddleware, open_template
-from benri import hello_grass, gitlog
+from benri import hello_grass, gitlog, open_all
 from wsgiref.simple_server import make_server
 app = App()
 #0 main
@@ -28,7 +28,8 @@ def gallery(env):
 app.registration('gallery', 'GET', gallery)
 #6 blog
 def blog(env):
-    return open_template('template.html', {'tp':'blog', 'name':'', 'va':''})
+    resp = open_all('blog')
+    return open_template('template.html', {'tp':'blog', 'name':'', 'va':resp})
 app.registration('blog', 'GET', blog)
 #6 log
 def logs(env):
