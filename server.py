@@ -31,7 +31,11 @@ def blog(env):
     resp = open_all()
     return open_template('template.html', {'tp':'blog', 'name':'', 'va':resp})
 app.registration('blog', 'GET', blog)
-#6 log
+#7 ie
+def ie(env):
+    return open_template('template.html', {'tp':'ie', 'name':'', 'va':''})
+app.registration('ie', 'GET', ie)
+#8 log
 def logs(env):
     return open_template('template.html', {'tp':'log', 'name':'', 'va':gitlog()})
 app.registration('log', 'GET', logs)
