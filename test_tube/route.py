@@ -3,14 +3,28 @@ from http.client import responses
 
 class Route():
 
-    def __init__(self, path, method, callback, status=200, content_type='text/html; charset=UTF-8'):
+    def __init__(self, path, method, callback, status=200, content_type=None, header=None):
         self.path = path
         self.method = method
         self.callback = callback
 
         self.__status = status
+
+        try :
+            if content_type is None: content_type = 'text/html; charset=UTF-8'
+        except:
+            print('error')
+            content_type = 'text/html; charset=UTF-8'
+        
         self.__ct = content_type
-        self.__header = Headers()
+
+        if header is not None:
+            hs = Headers()
+            for i in header:
+                hs.add_header(i, header[i])
+            self.__header = hs
+        else:
+            self.__header = Headers()
 
     @property
     def status_code(self):
