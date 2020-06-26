@@ -76,4 +76,4 @@ def saba(env):
 app.registration('saba', 'GET', saba)
 
 #auto writing
-app = MyMiddleware(app)
+#app = MyMiddleware(app)
