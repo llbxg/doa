@@ -20,14 +20,14 @@ person_id = domain + "active"
 key_id = domain + "active#main-key"
 followers_id = domain+"followers"
 
-user_id = 'llbxgone'
+user_id = 'llbxgtwo'
 
 def active(env):
     json_data = {'@context':context, 'type':'Person', 'id':person_id, "followers":followers_id, 'name':'kosh', 'preferredUsername': user_id, 
         'summary':'\u003cp\u003eIt is a microblog of \u003ca href=\"https://www.kosh.dev\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003ekosh.dev\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e .\u003c/p\u003e',
         'inbox': domain + 'inbox', 'url': domain + 'blog',
         'publicKey': {'@context':'https://www.w3.org/ns/activitystreams', 'type':'Key', 'id': key_id, 'owner':person_id, 'publicKeyPem':public_key},
-        "icon":{"type":"Image", "mediaType":"image/png", "url":domain + "settingXkoshdevapp.png/"},
+        "icon":{"type":"Image", "mediaType":"image/png", "url":domain + "static/settingXkoshdevapp.png/"},
         "image":{"type":"Image", "mediaType":"image/png", "url":domain + "static/settingXswimming.png/"}
     }
     return [json.dumps(json_data).encode('utf-8')]
@@ -39,7 +39,7 @@ def webfinger_host_meta(env):
 app.registration('.well-known/host-meta', 'GET', webfinger_host_meta, content_type='application/xml')
 
 def webfinger_resource(env):
-    response = {'subject':'acct:{}@www.kosh.dev'.format(user_id), 'links':[{'rel':'self', 'type':'application/activity+json', 'href':person_id},]}
+    response = {'subject':'acct:{}@kosh.dev'.format(user_id), 'links':[{'rel':'self', 'type':'application/activity+json', 'href':person_id},]}
     return [json.dumps(response).encode('utf-8')]
 app.registration('.well-known/webfinger', 'GET', webfinger_resource, content_type='application/json; charset=utf-8')
 
