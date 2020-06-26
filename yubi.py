@@ -34,7 +34,7 @@ def active(env):
 app.registration('active', 'GET', active, content_type='application/activity+json')
 
 def webfinger_host_meta(env):
-    xml_str = "<?xml version=\"1.0\"?><XRD xmlns=\"http://docs.oasis-open.org/ns/xri/xrd-1.0\"><Link rel=\"lrdd\" type=\"application/xrd+xml\" template=\"https://testbysaba.herokuapp.com/.well-known/webfinger?resource={uri}\"/></XRD>"
+    xml_str = "<?xml version=\"1.0\"?><XRD xmlns=\"http://docs.oasis-open.org/ns/xri/xrd-1.0\"><Link rel=\"lrdd\" type=\"application/xrd+xml\" template=\"https://www.kosh.dev/.well-known/webfinger?resource={uri}\"/></XRD>"
     return [xml_str.encode('utf-8')]
 app.registration('.well-known/host-meta', 'GET', webfinger_host_meta, content_type='application/xml')
 
