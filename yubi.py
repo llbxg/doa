@@ -39,7 +39,7 @@ def webfinger_host_meta(env):
 app.registration('.well-known/host-meta', 'GET', webfinger_host_meta, content_type='application/xml')
 
 def webfinger_resource(env):
-    response = {'subject':'acct:{}@kosh.dev'.format(user_id), 'links':[{'rel':'self', 'type':'application/activity+json', 'href':person_id},]}
+    response = {'subject':'acct:{}@www.kosh.dev'.format(user_id), 'links':[{'rel':'self', 'type':'application/activity+json', 'href':person_id},]}
     return [json.dumps(response).encode('utf-8')]
 app.registration('.well-known/webfinger', 'GET', webfinger_resource, content_type='application/json; charset=utf-8')
 
