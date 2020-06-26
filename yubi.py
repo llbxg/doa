@@ -11,7 +11,7 @@ from functools import partial
 context = "https://www.w3.org/ns/activitystreams"
 
 # keys
-public_key = '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqg4gCDZk4923v2H0of+i\nrTmhne5p/lmIOtiTzIKA1pZwfwmACyUa+yw/O3N2R3SY+dZ//Qrjy16wsH575f9o\nv/3p5iQ9mV33NZQMYI96zQA6AngPgleghdy5fS+Kt6Fojd7q1P+gG+VSSg8p5lc9\nmWPOoQzBrpkJgqw3tcW42LtB9b6HXaTxFrQmXOD+/Gqj/DxNV1XqjsnmCS6UHu5Z\nZBe6hFvfdKuQihPytvhNav9gfeQAyDJmNNTtL3QxNlAddB4koRIeUQY5SOrZqt/3\noDAWNRtXWQ25qF5/VFDTfvhV+7imVL/jphxCxHrm0TqQo9iZpmnchLCcBWrMyBLE\nbQIDAQAB\n-----END PUBLIC KEY-----'
+public_key = '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkl1GnAyvBxYW8tfcBZ0O\nUqZLmP5oowxX22GjowzK7maXk7z1a0Hpv2KHFqrS8pgFh1+x3YtRCyxkgNkIkk6H\nFYOdKEzadeFcdX0h9RteebJpmyW7xx4mQPzePCi/9z8n52GeuKNldbiQsPWAW/3e\nfMjlWBgzpDUWfqok7vxYe9flOR7ilZ0IOC4j+AU4A/61tFSuHDn6U8jQ6a4+geqc\nePdOlW8dfvi/zIfWFhSbhGXgPsYxbwmUXGmleqbaCEB7o2zb30x6u60lHzf3mqnZ\n9T92zZG1HhscyjDOwQwPrk78NAIuOOZBuiUTXRRTiAQsBaNsSbc8Eo+GptoyrsQ/\n2wIDAQAB\n-----END PUBLIC KEY-----'
 private_key = os.environ.get('PRIVATE_KEY')
 
 # info
@@ -20,13 +20,13 @@ person_id = domain + "active"
 key_id = domain + "active#main-key"
 followers_id = domain+"followers"
 
-user_id = 'llbxg_one'
+user_id = 'llbxgone'
 
 def active(env):
     json_data = {'@context':context, 'type':'Person', 'id':person_id, "followers":followers_id, 'name':'kosh', 'preferredUsername': user_id, 
         'summary':'\u003cp\u003eIt is a microblog of \u003ca href=\"https://www.kosh.dev\" rel=\"nofollow noopener noreferrer\" target=\"_blank\"\u003e\u003cspan class=\"invisible\"\u003ehttps://www.\u003c/span\u003e\u003cspan class=\"\"\u003ekosh.dev\u003c/span\u003e\u003cspan class=\"invisible\"\u003e\u003c/span\u003e\u003c/a\u003e .\u003c/p\u003e',
         'inbox': domain + 'inbox', 'url': domain + 'blog',
-        'publicKey': {'@context':'https://www.w3.org/ns/activitystreams', 'type':'Key', 'id': key_id, 'owner':person_id, 'publicKeyPem':private_key},
+        'publicKey': {'@context':'https://www.w3.org/ns/activitystreams', 'type':'Key', 'id': key_id, 'owner':person_id, 'publicKeyPem':public_key},
         "icon":{"type":"Image", "mediaType":"image/png", "url":domain + "settingXkoshdevapp.png/"},
         "image":{"type":"Image", "mediaType":"image/png", "url":domain + "static/settingXswimming.png/"}
     }
