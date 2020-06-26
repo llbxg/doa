@@ -49,7 +49,7 @@ def note(_id, dic_blog,env):
 
 for i in range(1, len(check_all())+1):
     dic_blog=get_article(i)
-    app.registration('active/test/'+str(i), 'GET', partial(note, i, dic_blog), content_type='application/activity+json')
+    app.registration('note'+str(i), 'GET', partial(note, i, dic_blog), content_type='application/activity+json')
 
 def inbox(env):
     try:
