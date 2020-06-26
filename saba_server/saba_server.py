@@ -133,9 +133,13 @@ class Saba():
         self.parse_request()
 
         env = self.make_env()
-
-        if len(self.path.split('/')) == 3 and self.path[-1] == '/':
+        pathspit = self.path.split('/')
+        if (pl:=len(pathspit)) == 3 and self.path[-1] == '/':
             return {'status':'301', 'env':env, 'host':self.r_host}
+        elif pathspit[1] != 'static' and pl == 4:
+            #env['PATH_INFO']=self.path[:-1]
+            return {'status':'301', 'env':env, 'host':self.r_host}
+
 
         return {'status':'200', 'env':env}
 
