@@ -202,7 +202,10 @@ def make_responce(env, app):
         response_data=b''
         content_length=0
     else:
-        content_length=len(response_data)
+        try:
+            content_length=len(response_data)
+        except:
+            content_length=0
 
     status_line = "HTTP/1.1 {}".format(status_code).encode("utf-8")
 
