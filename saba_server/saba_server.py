@@ -17,12 +17,10 @@ def _301(host, path):
 def remove_w(l, w=['']):
     return [a for a in l if a not in w]
 
-def make_formdata(others):
+def make_formdata(post_value):
     value_dic = {}
+    value_dic['multi'] = False
 
-    _, post_value = others.split('\r\n\r\n')
-    post_value= unquote_plus(post_value)
-    
     try:
         for post_v in post_value.split('&'):
             key, value = post_v.split('=', 1)
@@ -33,11 +31,11 @@ def make_formdata(others):
 
     return value_dic
 
-def make_formdata_multi(others, val):
+def make_formdata_multi(post_value, val):
     value_dic = {}
+    value_dic['multi'] = True
 
     try:
-        _, post_value = others.split('\r\n\r\n',1)
         value_dic['formdata'] = post_value
         value_dic['boundary'] = val.split('=')[1]
         value_dic['error'] = False
@@ -46,43 +44,56 @@ def make_formdata_multi(others, val):
 
     return value_dic
 
+def make_formdata_active(post_value):
+    return post_value
+
 class Saba():
     def __init__(self, app, host = '127.0.0.1', port = 8000):
         self.host = host
         self.port = port
-        self.request_queue_size = 50
+        self.request_queue_size = 100
         self.app = app
 
     def parse_request(self):
+        #print(self.request_data)
         # Parse rquest
-
         # (method, path, protocol) : request line / others : request header
         self.method, self.path, others = self.request_data.decode('iso-8859-1').split(' ', 2)
-        self.protocol, self.r_host, others = others.split('\r\n', 2)
-
         self.path = unquote(self.path)
-
         if '?' in self.path:
-            self.path, self.query = self.path.split('?', 1)
+            self.path, query = self.path.split('?', 1)
             self.path = self.path+'/'
-            if self.query[-1] == '/':
-                self.query = self.query[:-1]
-
+            query = query.split('&')
+            self.query={}
+            for q in query:
+                k, v = q.split('=', 1)
+                self.query[k] = v
         else:
-            self.query=""
+            self.query={}
 
+        self.protocol, self.r_host, others = others.split('\r\n', 2)
         self.r_host = self.r_host.split(': ')[1]
 
+        others, post_value = others.split('\r\n\r\n', 1)
+        self.others = others
+
         value_dic = {}
+        self.content_type = ''
         if self.method == 'POST':
             for o in remove_w(others.split('\r\n')):
                 if len(o := o.split(': '))==2:
                     key, val = o
-                    if key=='Content-Type':
+                    if key.lower()=='content-type':
                         if 'multipart/form-data' in val:
-                            value_dic = make_formdata_multi(others, val)
+                            print('multipart/form-data')
+                            value_dic = make_formdata_multi(post_value, val)
+                        elif 'application/activity+json' in val:
+                            print('application/activity+json')
+                            value_dic = make_formdata_active(post_value)
                         elif val=='application/x-www-form-urlencoded':
-                            value_dic = make_formdata(others)
+                            print('application/x-www-form-urlencoded')
+                            value_dic = make_formdata(post_value)
+                        self.content_type = val
 
         self.post_value = value_dic
 
@@ -94,23 +105,29 @@ class Saba():
         'SCRIPT_NAME' : '',
         'PATH_INFO' : self.path,
         'QUERY_STRING' : self.query,
-        'CONTENT_TYPE':'',
+        'CONTENT-TYPE':self.content_type,
         'CONTENT_LENGTH':'',
         'SERVER_NAME': 'saba_server/beta',
         'SERVER_PORT': self.port,
         'SERVER_PROTOCOL':self.protocol,
-        #HTTP_ Variables
+        'HOST':self.r_host,
 
         'wsgi.version':(1,0),
         'wsgi.url_scheme': "http",#https
         'wsgi.input':self.request_data,
-        'wsgi.errors':sys.stderr,
+        #'wsgi.errors':sys.stderr,
         'wsgi.multithread': True,
         'wsgi.multiprocess': False,
         'wsgi.run_once': False,
 
         'saba_post_value':self.post_value
         }
+
+        #HTTP_ Variables
+        for line in remove_w(self.others.split('\r\n')):
+            name, v = line.split(': ', 1)
+            env[name.upper()] = v
+
         return env
 
     # Return status & env.
@@ -139,7 +156,6 @@ class Saba():
         elif pathspit[1] != 'static' and pl == 4:
             #env['PATH_INFO']=self.path[:-1]
             return {'status':'301', 'env':env, 'host':self.r_host}
-
 
         return {'status':'200', 'env':env}
 
@@ -202,10 +218,10 @@ def make_responce(env, app):
         response_data=b''
         content_length=0
     else:
-        try:
+        try :
             content_length=len(response_data)
         except:
-            content_length=0
+            content_length=''
 
     status_line = "HTTP/1.1 {}".format(status_code).encode("utf-8")
 

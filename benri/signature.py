@@ -50,7 +50,12 @@ def verify_(env):
     env['AUTHORIZATION']='Signature: '+env['SIGNATURE']
     verify = HeaderVerifier(env, pk, h_g, method=env['REQUEST_METHOD'], path=env['PATH_INFO'])
 
-    return verify.verify()
+    try:
+        ans = verify.verify()
+    except:
+        ans = False
+
+    return ans
 
 def get_inbox(url):
     url =url+'.json'
