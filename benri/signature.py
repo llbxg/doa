@@ -11,12 +11,10 @@ from httpsig import HeaderSigner, HeaderVerifier
 def verify_(env):
     signature = {}
     sign = env['SIGNATURE']
-    print(sign)
     datas = sign.split(',')
     for data in datas:
         c, v = data.split('=', 1)
         signature[c] = v.strip('"')
-    print(signature)
 
     h_g = {}
     h = signature['headers'].split(' ')
@@ -24,7 +22,6 @@ def verify_(env):
         if name == '(request-target)':
             continue
         h_g[name.upper()] = env[name.upper()]
-    print(h_g)
 
     keyId = signature['keyId']
     url = keyId.split('#')[0]+'.json'
