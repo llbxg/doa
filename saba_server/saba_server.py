@@ -212,9 +212,11 @@ def make_responce(env, app):
     if len(headers)==0 or status_code is None:
         return _500()
     else:
-        headers = [f"{k}: {v}" for k, v in headers]
-        headers.append('CONTENT_LENGTH: {}'.format(content_length))
-        headers = '\r\n'.join(headers).encode('utf-8')
-        response_data=status_line+b'\r\n'+headers+b'\r\n\r\n'+response_data[0]
-
+        try:
+            headers = [f"{k}: {v}" for k, v in headers]
+            headers.append('CONTENT_LENGTH: {}'.format(content_length))
+            headers = '\r\n'.join(headers).encode('utf-8')
+            response_data=status_line+b'\r\n'+headers+b'\r\n\r\n'+response_data[0]
+        except:
+            response_data=status_line+b'\r\n'+headers+b'\r\n\r\n'
     return response_data
