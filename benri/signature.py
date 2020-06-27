@@ -11,10 +11,12 @@ from httpsig import HeaderSigner, HeaderVerifier
 def verify_(env):
     signature = {}
     sign = env['SIGNATURE']
+    print(sign)
     datas = sign.split(',')
     for data in datas:
         c, v = data.split('=', 1)
         signature[c] = v.strip('"')
+    print(signature)
 
     h_g = {}
     h = signature['headers'].split(' ')
@@ -22,6 +24,7 @@ def verify_(env):
         if name == '(request-target)':
             continue
         h_g[name.upper()] = env[name.upper()]
+    print(h_g)
 
     keyId = signature['keyId']
     url = keyId.split('#')[0]+'.json'
@@ -31,9 +34,16 @@ def verify_(env):
     user_agent = 'Mozilla/5.0'
     headers = {'User-Agent': user_agent}
     req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req) as res:
-        the_page = res.read().decode('utf-8')
-        dec = json.loads(the_page)
+    try:
+        with urllib.request.urlopen(req) as res:
+            the_page = res.read().decode('utf-8')
+            dec = json.loads(the_page)
+    except urllib.error.HTTPError as e:
+        print('HTTPError: ', e)
+        return ''
+    except json.JSONDecodeError as e:
+        print('JSONDecodeError: ', e)
+        return ''
 
     pk = dec['publicKey']['publicKeyPem']
 
