@@ -228,3 +228,7 @@ header{
     font-size: calc(1em * 0.8);
     color: gray;
 }
+
+.mbicon{
+    height: 60px;
+}

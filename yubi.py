@@ -20,7 +20,7 @@ person_id = domain + "active"
 key_id = domain + "active#main-key"
 followers_id = domain+"followers"
 
-user_id = 'llbxg'
+user_id = 'llbxglltest'
 
 def active(env):
     json_data = {'@context':context, 'type':'Person', 'id':person_id, "followers":followers_id, 'name':'kosh', 'preferredUsername': user_id, 
@@ -49,7 +49,7 @@ def note(_id, dic_blog,env):
 
 for i in range(1, len(check_all())+1):
     dic_blog=get_article(i)
-    app.registration('note'+str(i), 'GET', partial(note, i, dic_blog), content_type='application/activity+json')
+    app.registration('notest'+str(i), 'GET', partial(note, i, dic_blog), content_type='application/activity+json')
 
 def inbox(env):
     try:
