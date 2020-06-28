@@ -44,7 +44,7 @@ def webfinger_resource(env):
 app.registration('.well-known/webfinger', 'GET', webfinger_resource, content_type='application/json; charset=utf-8')
 
 def note(_id, dic_blog,env):
-    response = {'@context':context, 'type':'Note', 'id':person_id + '/article/' + str(_id), 'attributedTo':person_id, 'content':dic_blog['article'], 'published':dic_blog['date'], 'to':['https://www.w3.org/ns/activitystreams#Public',]}
+    response = {'@context':context, 'type':'Note', 'id':person_id + '/notest' + str(_id), 'attributedTo':person_id, 'content':dic_blog['article'], 'published':dic_blog['date'], 'to':['https://www.w3.org/ns/activitystreams#Public',]}
     return [json.dumps(response).encode('utf-8')]
 
 for i in range(1, len(check_all())+1):
