@@ -75,5 +75,10 @@ def saba(env):
     return open_template('template.html', {'tp':'code', 'name':'saba', 'va':''})
 app.registration('saba', 'GET', saba)
 
+#appforpc-hakos
+def hakos(env):
+    return open_template('template.html', {'tp':'appforpc', 'name':'hakos', 'va':''})
+app.registration('hakos', 'GET', hakos)
+
 #auto writing
 #app = MyMiddleware(app)
